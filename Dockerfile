@@ -6,7 +6,7 @@ ENV LANG C.UTF-8
 ENV LC_ALL C.UTF-8
 ENV PYTHONPATH /root
 
-RUN apt-get update && apt-get install -y build-essential
+RUN apt-get update && apt-get install -y build-essential curl
 
 
 ENV VENV /opt/venv
@@ -14,7 +14,7 @@ ENV VENV /opt/venv
 RUN python3 -m venv ${VENV}
 ENV PATH="${VENV}/bin:$PATH"
 
-RUN curl -sL https://ctl.flyte.org/install | bash
+RUN curl -sL https://ctl.flyte.org/install | bash && mv ./bin/flytectl /bin
 
 # Install Python dependencies
 COPY ./requirements.txt /root
