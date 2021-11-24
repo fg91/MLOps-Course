@@ -14,6 +14,8 @@ ENV VENV /opt/venv
 RUN python3 -m venv ${VENV}
 ENV PATH="${VENV}/bin:$PATH"
 
+RUN curl -sL https://ctl.flyte.org/install | bash
+
 # Install Python dependencies
 COPY ./requirements.txt /root
 RUN pip install -r /root/requirements.txt
